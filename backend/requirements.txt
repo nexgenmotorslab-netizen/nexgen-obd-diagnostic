@@ -1,0 +1,6 @@
+Flask==3.0.3
+Flask-CORS==4.0.1
+pyserial==3.5
+obd
+python-dotenv==1.0.1
+gunicorn==21.2.0
