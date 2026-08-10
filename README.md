@@ -23,7 +23,7 @@ NEXGEN OBD connects to any vehicle via an OBD-II adapter and reads live engine d
     ```bash
     pip install -r requirements.txt
 
-    ![dashboard](Dashboard.png0
+    ![dashboard](Dashboard.png0)
 
     ### **3. Push to GitHub **
     ```bash
