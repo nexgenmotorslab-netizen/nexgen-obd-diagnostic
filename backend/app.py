@@ -95,8 +95,10 @@ def reset_sensors():
 
     if result is None:
         return {"status": "FAILED", "message": "Could not clear codes"}
-    
+
     return {"status": "SUCCESS", "message": "All faults cleared. Engine Light reset"}
+
+
 app.mount("/static", StaticFiles(directory="."), name="static")
 
 # Global variables to store latest data from ESP32
@@ -106,25 +108,26 @@ latest_data = {
     "coolant_temp": 0,
     "fuel_level": 0,
     "engine_load": 0,
-    "throttle_pos": 0
+    "throttle_pos": 0,
 }
+
 
 @app.post("/update_data")
 async def update_data(request: Request):
-    global latest_data
     data = await request.json()
-    
+
     # ESP32 will send raw OBD strings like "RPM:750,SPEED:60"
     # Parse them here and update latest_data
     # For now we just save it
     latest_data.update(data)
-    
+
     return {"status": "ok", "received": data}
 
 
 @app.get("/all")
 def get_all():
     return latest_data
+
 
 @app.get("/")
 def home():
