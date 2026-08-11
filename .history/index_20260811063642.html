@@ -272,7 +272,7 @@
             let lastFaultCount = 0; // to detect new faults
 
             async function getData() {
-                let res = await fetch('{$API_URL}/all');
+                let res = await fetch('$API/all');
                 let data = await res.json();
 
                 // Update values
@@ -301,7 +301,7 @@
             // NEW: BEEP ON NEW FAULT
             async function getFaults() {
                 document.getElementById('faults').innerText = 'Scanning...';
-                let res = await fetch('{$API_URL}/faults');
+                let res = await fetch('/faults');
                 let data = await res.json();
                 document.getElementById('faults').innerText = JSON.stringify(data, null, 2);
 
@@ -321,7 +321,7 @@
 
             async function resetCar() {
                 if (confirm("This will clear all DTCs and reset MIL. Continue?")) {
-                    let res = await fetch('{$API_URL}/reset', { method: 'POST' });
+                    let res = await fetch('/reset', { method: 'POST' });
                     let data = await res.json();
                     alert(data.message);
                     getFaults();
@@ -367,7 +367,7 @@
 
             // UPDATE getData() FUNCTION TO CALL IT
             async function getData() {
-                let res = await fetch('{$API_URL}/all');
+                let res = await fetch('/all');
                 let data = await res.json();
                 document.getElementById('rpm').innerText = data.rpm ?? 'N/A';
                 document.getElementById('speed').innerText = data.speed_kmh ?? 'N/A';

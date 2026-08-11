@@ -367,7 +367,7 @@
 
             // UPDATE getData() FUNCTION TO CALL IT
             async function getData() {
-                let res = await fetch('{$API_URL}/all');
+                let res = await fetch('/all');
                 let data = await res.json();
                 document.getElementById('rpm').innerText = data.rpm ?? 'N/A';
                 document.getElementById('speed').innerText = data.speed_kmh ?? 'N/A';
